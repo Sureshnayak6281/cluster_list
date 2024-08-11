@@ -3,12 +3,13 @@ export interface Customer {
   name: string;
   email: string;
   address: {
-    street: string;
     suite: string;
+    street: string;
     city: string;
     zipcode: string;
   };
   company: {
+    name: string;
     catchPhrase: string;
   };
 }

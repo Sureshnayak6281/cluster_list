@@ -10,7 +10,7 @@ const generateFakeCustomers = (num: number): Customer[] => {
     name: `Customer ${index + 1}`,
     email: `customer${index + 1}@example.com`,
     address: {
-      suite:'',
+      suite: '',
       street: `123 Fake St ${index + 1}`,
       city: `City ${index + 1}`,
       zipcode: `12345-${index + 1}`
@@ -28,9 +28,14 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const fetchCustomers = () => {
-      // Generate 1000 fake customers
       const fakeCustomers = generateFakeCustomers(1000);
       setCustomers(fakeCustomers);
+
+      // Set default customer (customer-1) if exists
+      const defaultCustomer = fakeCustomers.find(customer => customer.id === 1);
+      if (defaultCustomer) {
+        setSelectedCustomer(defaultCustomer);
+      }
     };
 
     fetchCustomers();
